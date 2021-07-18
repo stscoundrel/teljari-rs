@@ -1,4 +1,4 @@
-Name: Rust - Test
+name: Rust - Test
 
 on: [pull_request]
 
