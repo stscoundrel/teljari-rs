@@ -3,13 +3,14 @@ Name: Rust - Build
 on: [pull_request]
 
 jobs:
-  runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-  steps:
-    - uses: actions/checkout@v2
-    - uses: actions-rs/toolchain@v1
-      with:
-        toolchain: stable
-    - run: cargo build --release --all-features
+  build:
+    runs-on: ubuntu-latest
+      strategy:
+        matrix:
+          os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      - run: cargo build --release --all-features
