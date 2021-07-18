@@ -5,10 +5,10 @@
 /// 
 /// let list: Vec<&str> = vec!("Me", "Myself", "I");
 /// let conj: &str = "and";
-/// let result = join_with_conj(list, &conj);
+/// let result = join_with_conj(&list, &conj);
 /// assert_eq!(result, "Me, Myself and I");
 /// ```
-pub fn join_with_conj(list: Vec<&str>, conj: &str) -> String {
+pub fn join_with_conj(list: &[&str], conj: &str) -> String {
     if list.is_empty() { panic!("Array should not be empty"); }
     if list.len() == 1 { return String::from(list[0]); }
 
@@ -28,7 +28,7 @@ mod tests {
         let list: Vec<&str> = Vec::new();
         let conj: &str = "whatever";
 
-        join_with_conj(list, conj);
+        join_with_conj(&list, conj);
     }
 
     #[test]
@@ -36,7 +36,7 @@ mod tests {
         let list: Vec<&str> = vec!("Finnish");
         let conj: &str = "and (which should not be printed)";
         let expected = "Finnish";
-        let result = join_with_conj(list, conj);
+        let result = join_with_conj(&list, conj);
         assert_eq!(result, expected);
     }
 
@@ -45,7 +45,7 @@ mod tests {
         let list: Vec<&str> = vec!("Finnish", "Swedish", "Norwegian", "Danish");
         let conj: &str = "and";
         let expected = "Finnish, Swedish, Norwegian and Danish";
-        let result = join_with_conj(list, conj);
+        let result = join_with_conj(&list, conj);
         assert_eq!(result, expected);
     }
 
@@ -54,7 +54,7 @@ mod tests {
         let list: Vec<&str> = vec!("Finnish", "Swedish", "Norwegian", "Danish");
         let conj: &str = "or worse";
         let expected = "Finnish, Swedish, Norwegian or worse Danish";
-        let result = join_with_conj(list, conj);
+        let result = join_with_conj(&list, conj);
         assert_eq!(result, expected);
     }
 }
