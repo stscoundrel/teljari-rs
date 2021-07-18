@@ -41,6 +41,15 @@ mod tests {
     }
 
     #[test]
+    fn does_not_add_commas_to_two_member_list() {
+        let list: Vec<&str> = vec!("Finnish", "Karelian");
+        let conj: &str = "or";
+        let expected = "Finnish or Karelian";
+        let result = join_with_conj(&list, conj);
+        assert_eq!(result, expected);
+    }
+
+    #[test]
     fn joins_with_and_conjunction() {
         let list: Vec<&str> = vec!("Finnish", "Swedish", "Norwegian", "Danish");
         let conj: &str = "and";
