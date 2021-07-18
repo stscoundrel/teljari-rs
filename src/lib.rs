@@ -1,11 +1,15 @@
 /// Join vector of strings to a human-readable string with conjunction.
 ///
+/// 
+/// # Examples
+/// 
 /// ```
 /// use teljari::join_with_conj;
 /// 
 /// let list: Vec<&str> = vec!("Me", "Myself", "I");
 /// let conj: &str = "and";
 /// let result = join_with_conj(&list, &conj);
+/// 
 /// assert_eq!(result, "Me, Myself and I");
 /// ```
 pub fn join_with_conj(list: &[&str], conj: &str) -> String {
